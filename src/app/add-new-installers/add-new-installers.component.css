@@ -1,0 +1,11 @@
+form {
+    margin-top: 3rem;
+}
+
+.mb-3 {
+    margin-bottom: 3rem !important;
+}
+
+.file-input {
+    display: none;
+  }

@@ -1,0 +1,9 @@
+.navbar {
+    background-color: #e3f2fd;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+    font-size: xx-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
