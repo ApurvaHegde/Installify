@@ -3,26 +3,45 @@
 
     <div class="col-sm">
       <p class="title">Application Name</p>
-      <p *ngFor="let name of appNames">
+      <p class="loop" *ngFor="let name of appNames">
           {{ name }}
       </p>
     </div>
 
     <div class="col-sm">
       <p class="title">Version</p>
-      <p *ngFor="let version of versions">
+      <p class="loop" *ngFor="let version of versions">
         {{ version }}
       </p>    
     </div>
 
     <div class="col-sm">
       <p class="title">Download Installer</p>
-      <p><button class="btn btn-primary">Download</button></p>
-      <p><button class="btn btn-primary">Download</button></p>
-      <p *ngFor="let installer of installers"> <button class="btn btn-primary" (click)="save()">Download</button>
-        <!-- {{ installer }} -->
+      <p *ngFor="let installer of installers; let i = index"> <button class="btn btn-primary" (click)="save(installer, i)">Download</button>
       </p>      
-      <!-- <a href="C:\Users\aphegde\OneDrive - Cisco\Documents\Hackathon\installify\src\app\downloads\" download="Sublime Text Build 3211 x64 Setup.exe">click this</a>       -->
+    </div>
+
+    <div class="col-sm">
+      <p class="title">Manage</p>
+      <p *ngFor="let installer of installers; let i = index">  
+        <button 
+          mat-icon-button 
+          (click)="delete(i)" 
+          color="warn" 
+          aria-label="Example icon-button with a delete icon">
+          <mat-icon class="icon-display">delete</mat-icon>
+        </button>
+
+        <button 
+          mat-icon-button 
+          id="edit-btn" 
+          (click)="edit(i)" 
+          color="primary" 
+          routerLink="/edit-installer"
+          aria-label="Example icon-button with an edit icon">
+          <mat-icon class="icon-display">edit</mat-icon>
+        </button>
+      </p>
     </div>
 
   </div>

@@ -4,30 +4,39 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { InstallersService } from '../installers.service'
 
 @Component({
-  selector: 'add-new-installers',
-  templateUrl: './add-new-installers.component.html',
-  styleUrls: ['./add-new-installers.component.css']
+  selector: 'edit-installer',
+  templateUrl: './edit-installer.component.html',
+  styleUrls: ['./edit-installer.component.css']
 })
-export class AddNewInstallersComponent {
+export class EditInstallerComponent {
+
   file=null;
-  constructor(public toastr: ToastrManager, private service: InstallersService) {}
-  
+  index=null;
   form = new FormGroup ({
     applicationName: new FormControl('', Validators.required),
     version: new FormControl('', Validators.required),
-    uploadInstaller: new FormControl('', Validators.required)
   })
+  constructor(public toastr: ToastrManager, private service: InstallersService) { 
+    const data = service.getEditData()
+    this.index = data[0]
+    this.form.setValue({
+      applicationName: data[1],
+      version: data[2],
+    })
+  }
 
   submit(f: any){
     console.log(f.value.applicationName)
     console.log(f.value.version)
     console.log(this.file)
-    this.service.addData(f.value.applicationName, f.value.version, this.file)
+    this.service.modifyData(this.index, f.value.applicationName, f.value.version)
     f.reset()
+    this.service.clearEditData()
   }
-    
+
+  
   showSuccess() {
-      this.toastr.successToastr('File uploaded.', 'Success!');
+      this.toastr.successToastr('Updated data.', 'Success!');
   }
 
   showToast(position: any = 'top-left') {

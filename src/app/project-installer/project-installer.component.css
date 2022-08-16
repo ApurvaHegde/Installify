@@ -7,3 +7,15 @@ p {
     font-weight: bold;
     font-size: large;
 }
+
+.loop {
+    margin-top: 3.75rem;
+}
+
+.icon-display {
+    transform: scale(2);
+ }
+
+#edit-btn {
+    margin-left: 20px;
+}

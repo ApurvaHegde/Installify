@@ -8,12 +8,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjectInstallerComponent } from './project-installer/project-installer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddNewInstallersComponent } from './add-new-installers/add-new-installers.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { EditInstallerComponent } from './edit-installer/edit-installer.component';
+import { TrialComponent } from './trial/trial.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     ProjectInstallerComponent,
     AddNewInstallersComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EditInstallerComponent,
+    TrialComponent,
   ],
   imports: [
     MatTabsModule,
@@ -29,7 +35,10 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       {
@@ -43,6 +52,14 @@ import { ToastrModule } from 'ng6-toastr-notifications';
       {
         path: 'add-new-installers', 
         component: AddNewInstallersComponent
+      },
+      {
+        path: 'project-installer/edit-installer',
+        component: EditInstallerComponent
+      },
+      {
+        path: 'edit-installer',
+        component: EditInstallerComponent
       },
       {
         path: '**', 

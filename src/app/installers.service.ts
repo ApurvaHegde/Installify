@@ -5,15 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class InstallersService {
   appList: Array<{name: string, empoloyeeID: number}> = []; 
-  applicationNames = ['Sublime Text Editor', 'NodeJs']
-  versions = ['3.2.11', '8.2.2']
+  applicationNames = []
+  versions = []
   installers = []
+  edit = []
 
   constructor() { }
-
-  // addData(appName, vNo) {
-  //   this.appList.push({ name: appName, empoloyeeID: vNo });
-  // }
 
   addData(appName, vNo, file) {
     this.applicationNames.push(appName)
@@ -21,15 +18,8 @@ export class InstallersService {
     this.installers.push(file)
   }
 
-  getCourses(){
-    return ["course1", "course2", "course3"];
-  }
-
-  // getData() {
-  //   return this.appList
-  // }
-
-  getAppName() {
+  // Get the whole list
+  getAppNames() {
     return this.applicationNames
   }
   getVersions() {
@@ -37,6 +27,43 @@ export class InstallersService {
   }
   getInstallers() {
     return this.installers
+  }
+  
+  editData(i) {
+    this.edit.push(i)
+    this.edit.push(this.applicationNames[i])
+    this.edit.push(this.versions[i])
+    this.edit.push(this.installers[i])
+  }
+
+  getEditData() {
+    return this.edit
+  }
+
+  modifyData(index, appName, version) {
+    this.applicationNames[index] = appName
+    this.versions[index] = version
+  }
+
+  clearEditData() {
+    this.edit = []
+  }
+
+  // Get single items of the list
+  getAppName(i) {
+    return this.applicationNames[i]
+  }
+  getVersion(i) {
+    return this.versions[i]
+  }
+  getInstaller(i) {
+    return this.installers[i]
+  }
+
+  deleteInstaller(index) {
+    this.applicationNames.splice(index, 1)
+    this.versions.splice(index, 1)
+    this.installers.splice(index, 1)
   }
 
 }

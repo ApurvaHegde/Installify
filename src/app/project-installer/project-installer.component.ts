@@ -13,15 +13,24 @@ export class ProjectInstallerComponent {
   versions = [];
   installers = [];
   // To use a service we need to make an obj for it
-  constructor(service: InstallersService) {
+  constructor(private service: InstallersService) {
     //  this.courses = service.getCourses(); 
-    this.appNames = service.getAppName()
+    this.appNames = service.getAppNames()
     this.versions = service.getVersions()
     this.installers = service.getInstallers()
   }   
 
-  save(){
-    filesaver.saveAs(this.installers,`${this.appNames[0]}.exe`);
+  save(installer, index){
+    console.log(index)
+    filesaver.saveAs(installer,`${this.appNames[index]}.exe`);
     console.log("called");
+  }
+
+  delete(index) {
+    this.service.deleteInstaller(index)
+  }
+
+  edit(index) {
+    this.service.editData(index)
   }
 }
